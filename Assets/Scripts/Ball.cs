@@ -3,8 +3,8 @@ using UnityEngine;
 public sealed class Ball : MonoBehaviour
 {
     [Header("Spawn Position")]
-    [SerializeField] Vector2 _pointA;
-    [SerializeField] Vector2 _pointB;
+    [SerializeField] private Vector2 _pointA;
+    [SerializeField] private Vector2 _pointB;
 
     public ColorType ColorBall { get; private set; }
     public float RateValue { get; private set; }
@@ -12,16 +12,14 @@ public sealed class Ball : MonoBehaviour
 
     private SpriteRenderer _srBall;
 
-    // private void Start() {
-    //     _srBall = GetComponent<SpriteRenderer>();
-    // }
+    public void BallInit() {
+        _srBall = GetComponent<SpriteRenderer>();
+    }
 
     public void EnableBall(ColorType colorType, float rateValue) {
         float spawnPoint = Random.Range(_pointA.x, _pointB.x);
 
         transform.position = new Vector2(spawnPoint, _pointA.y);
-
-        _srBall = GetComponent<SpriteRenderer>();
 
         _srBall.color = colorType switch
         {

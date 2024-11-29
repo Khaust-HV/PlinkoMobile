@@ -3,17 +3,17 @@ using UnityEngine;
 public sealed class FieldPins : MonoBehaviour
 {
     [Header("Field Settings")]
-    [SerializeField] GameObject _pinPrefab;
-    [SerializeField] int _rowsNumber;
-    [SerializeField] float _distance;
-    [SerializeField] float _pinSize;
+    [SerializeField] private GameObject _pinPrefab;
+    [SerializeField] private int _rowsNumber;
+    [SerializeField] private float _distance;
+    [SerializeField] private float _pinSize;
 
-    void Start()
+    private void Start()
     {
         PlacePins();
     }
 
-    void PlacePins()
+    private void PlacePins()
     {
         int totalRows = _rowsNumber + 2; 
 
