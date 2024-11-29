@@ -1,5 +1,5 @@
 # PlinkoMobile
- Test Project [Plinko] version 0.0.4
+ Test Project [Plinko] version 1.0.0
 
 // Version Unity Editor - 60000.0.28f1
 
