@@ -6,7 +6,6 @@ public sealed class Ball : MonoBehaviour
     [SerializeField] Vector2 _pointA;
     [SerializeField] Vector2 _pointB;
 
-
     public ColorType ColorBall { get; private set; }
     public float RateValue { get; private set; }
     public bool IsEnableBall { get; private set; }
@@ -24,19 +23,13 @@ public sealed class Ball : MonoBehaviour
 
         _srBall = GetComponent<SpriteRenderer>();
 
-        switch (colorType) {
-            case ColorType.GreenBall:
-                _srBall.color = Color.green;
-            break;
-
-            case ColorType.YellowBall:
-                _srBall.color = Color.yellow;
-            break;
-
-            case ColorType.RedBall:
-                _srBall.color = Color.red;
-            break;
-        }
+        _srBall.color = colorType switch
+        {
+            ColorType.GreenBall => Color.green,
+            ColorType.YellowBall => Color.yellow,
+            ColorType.RedBall => Color.red,
+            _ => _srBall.color
+        };
 
         RateValue = rateValue;
         ColorBall = colorType;

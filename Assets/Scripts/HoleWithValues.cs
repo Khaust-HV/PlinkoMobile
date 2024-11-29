@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public sealed class HoleWithValues : MonoBehaviour
 {
     [Header("Square Text Settings")]
-    [SerializeField] Text _greenSquareText;
-    [SerializeField] Text _yellowSquareText;
-    [SerializeField] Text _redSquareText;
+    [SerializeField] TextMesh _greenSquareText;
+    [SerializeField] TextMesh _yellowSquareText;
+    [SerializeField] TextMesh _redSquareText;
     [SerializeField] float _greenSquareValue;
     [SerializeField] float _yellowSquareValue;
     [SerializeField] float _redSquareValue;
@@ -17,11 +16,11 @@ public sealed class HoleWithValues : MonoBehaviour
 
     // private PlayerManager Interface
 
-    // private void Start() {
-    //     _greenSquareText.text = _greenSquareValue.ToString();
-    //     _yellowSquareText.text = _yellowSquareValue.ToString();
-    //     _redSquareText.text = _redSquareValue.ToString();
-    // }
+    private void Start() {
+        _greenSquareText.text = _greenSquareValue.ToString();
+        _yellowSquareText.text = _yellowSquareValue.ToString();
+        _redSquareText.text = _redSquareValue.ToString();
+    }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Ball")) {
@@ -32,19 +31,22 @@ public sealed class HoleWithValues : MonoBehaviour
             switch(ball.ColorBall) {
                 case ColorType.GreenBall:
                     result = ball.RateValue * _greenSquareValue;
+                    _greenSquareAnimator.Play("InteractionWithObject");
                 break;
 
                 case ColorType.YellowBall:
                     result = ball.RateValue * _yellowSquareValue;
+                    _yellowSquareAnimator.Play("InteractionWithObject");
                 break;
 
                 case ColorType.RedBall:
                     result = ball.RateValue * _redSquareValue;
+                    _redSquareAnimator.Play("InteractionWithObject");
                 break;
             }
 
             //PlayerManager(result, colorType) Interface
-            Debug.Log("Rate value = " + ball.RateValue + "ColorType = " + ball.ColorBall);
+            Debug.Log("Rate value = " + ball.RateValue + " ColorType = " + ball.ColorBall);
 
             ball.DisableBall();
         }
